@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>فرم ثبت نام - Real Madrid</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+
+:root {
+  --bg1: #e0e5ec;
+  --bg2: #d6dbe3;
+  --accent: #4a7cff;
+  --accent-dark: #345ddb;
+  --text: #2f3842;
+  --radius: 16px;
+  --shadow-light: #ffffff;
+  --shadow-dark: #b8bcc2;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Vazirmatn', sans-serif;
+  background: linear-gradient(145deg, var(--bg1), var(--bg2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.card {
+  background: var(--bg1);
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+  padding: 40px 32px;
+  text-align: right;
+  direction: rtl;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 15px 15px 25px var(--shadow-dark), -15px -15px 25px var(--shadow-light);
+  transform: translateY(-5px) scale(1.02);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: var(--accent-dark);
+  text-shadow: 1px 1px 2px #fff;
+}
+
+p.lead {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #5a6572;
+}
+
+form .row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 520px) {
+  .row { flex-direction: column; }
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg1);
+  box-shadow: inset 6px 6px 8px var(--shadow-dark), inset -6px -6px 8px var(--shadow-light);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #9aa3b0;
+  opacity: 1;
+}
+
+input:focus {
+  box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light),
+              0 0 0 4px rgba(74,124,255,0.3);
+}
+
+.note {
+  font-size: 12px;
+  color: #7d8791;
+  margin-top: 5px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  flex: 1;
+  border: none;
+  font-family: inherit;
+  background: var(--bg1);
+  color: var(--accent-dark);
+  padding: 12px 0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: inset 3px 3px 6px #2b49a3, inset -3px -3px 6px #638cff;
+  transform: translateY(-2px);
+}
+
+button.secondary {
+  color: #777;
+}
+
+.error, .success {
+  font-size: 13px;
+  margin-top: 12px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  display: none;
+}
+
+.error {
+  color: #b22222;
+  background: #ffeaea;
+}
+
+.success {
+  color: #1f7728;
+  background: #e9ffec;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="card" role="main">
+    <h1>فرم ثبت نام</h1>
+    <p class="lead">لطفاً تمام فیلدها را تکمیل کنید. کد ملی باید دقیقاً ۱۰ رقم باشد.</p>
+
+    <form id="regForm" action="insert.php" method="POST" novalidate>
+      <div class="row">
+        <div style="flex:1">
+          <label for="f_name">نام</label>
+          <input id="f_name" name="f_name" type="text" required placeholder="مثلاً: علی">
+        </div>
+        <div style="flex:1">
+          <label for="l_name">نام خانوادگی</label>
+          <input id="l_name" name="l_name" type="text" required placeholder="مثلاً: رضایی">
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="flex:1">
+          <label for="fa_name">اسم پدر</label>
+          <input id="fa_name" name="fa_name" type="text" required placeholder="اسم پدر">
+        </div>
+        <div style="flex:1">
+          <label for="n_code">کد ملی</label>
+          <input id="n_code" name="n_code" type="tel" inputmode="numeric"
+                required maxlength="10" minlength="10" pattern="\d{10}"
+                placeholder="۱۰ رقم - فقط عدد">
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="flex:1">
+          <label for="username">نام کاربری</label>
+          <input id="username" name="username" type="text" required placeholder="نام کاربری شما">
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="flex:1">
+          <label for="pas">رمز عبور</label>
+          <input id="pas" name="pas" type="password" required minlength="6" placeholder="حداقل ۶ کاراکتر">
+        </div>
+        <div style="flex:1">
+          <label for="confirm_pas">تأیید رمز عبور</label>
+          <input id="confirm_pas" name="confirm_pas" type="password" required minlength="6" placeholder="تکرار رمز عبور">
+        </div>
+      </div>
+
+      <div class="note">با زدن «ثبت نام»، اطلاعات به صورت امن ارسال می‌شود.</div>
+
+      <div class="actions">
+        <button type="submit">ثبت نام</button>
+        <button type="reset" class="secondary">پاک کردن</button>
+      </div>
+
+      <div id="formError" class="error"></div>
+      <div id="formSuccess" class="success">ثبت نام با موفقیت انجام شد ✅</div>
+    </form>
+  </div>
+
+  <script>
+  (function(){
+    const form = document.getElementById('regForm');
+    const national = document.getElementById('n_code');
+    const pass = document.getElementById('pas');
+    const confirmPass = document.getElementById('confirm_pas');
+    const errBox = document.getElementById('formError');
+    const successBox = document.getElementById('formSuccess');
+
+    national.addEventListener('input', function(){
+      this.value = this.value.replace(/[^\d]/g, '').slice(0,10);
+    });
+
+    form.addEventListener('submit', function(e){
+      errBox.style.display = 'none';
+      errBox.textContent = '';
+      successBox.style.display = 'none';
+
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        errBox.textContent = 'لطفاً تمام فیلدها را به درستی پر کنید.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      if (pass.value !== confirmPass.value) {
+        e.preventDefault();
+        errBox.textContent = 'رمز عبور و تکرار آن مطابقت ندارند.';
+        errBox.style.display = 'block';
+        confirmPass.focus();
+        return;
+      }
+
+      successBox.style.display = 'block';
+    });
+  })();
+  </script>
+</body>
+</html>
